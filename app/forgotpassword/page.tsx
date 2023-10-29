@@ -22,7 +22,7 @@ const ForgotPassword = () => {
         <Text className="self-center pt-4" weight={"light"}>
           Do you remember your password?{" "}
           <Link
-            href={"/signup"}
+            href={"/signin"}
             className="self-end rt-Text rt-reset rt-Link rt-underline-auto rt-r-weight-medium"
           >
             Sign in!

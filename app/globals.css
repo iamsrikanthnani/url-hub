@@ -4,4 +4,10 @@
 
 .radix-themes {
   --default-font-family: var(--font-inter);
+  .rt-Button {
+    cursor: pointer;
+  }
+  .rt-Text {
+    user-select: none;
+  }
 }

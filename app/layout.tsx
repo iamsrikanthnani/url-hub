@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Theme } from "@radix-ui/themes";
+import { Theme, ThemePanel } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 
 const inter = Inter({
@@ -23,7 +23,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.variable}>
-        <Theme accentColor="iris" panelBackground="solid">
+        <Theme accentColor="iris" panelBackground="solid" radius="large">
+          {/* <ThemePanel/> */}
           {children}
         </Theme>
       </body>
