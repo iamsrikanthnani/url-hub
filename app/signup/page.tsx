@@ -4,34 +4,29 @@ import { Flex, TextField, Button, Text } from "@radix-ui/themes";
 import AuthLayout from "@/components/AuthLayout";
 import Link from "next/link";
 
-const SignIn = () => {
+const SignUp = () => {
   return (
     <AuthLayout>
       <Flex direction={"column"} gap={"3"} width={"100%"}>
         <Flex direction={"column"}>
           <Text size={"8"} weight={"bold"}>
-            Welcome Back!
+            Start Your Journey Here
           </Text>
           <Text size={"3"} weight={"light"} className="text-gray-500">
-            Securely sign in with your email and password.
+            Sign up to explore a world of possibilities.
           </Text>
         </Flex>
+        <TextField.Input size={"3"} placeholder={"Enter name"} />
         <TextField.Input size={"3"} placeholder={"Enter email"} />
         <TextField.Input size={"3"} placeholder={"Enter password"} />
-        <Button size={"3"}>Continue</Button>
-        <Link
-          className="self-end rt-Text rt-reset rt-Link rt-underline-auto rt-r-weight-regular"
-          href={"/forgotpassword"}
-        >
-          Forgot password?
-        </Link>
+        <Button size={"3"}>Get Started</Button>
         <Text className="self-center pt-4" weight={"light"}>
-          Don't have an account?{" "}
+          already have an account?{" "}
           <Link
-            href={"/signup"}
+            href={"/signin"}
             className="self-end rt-Text rt-reset rt-Link rt-underline-auto rt-r-weight-medium"
           >
-            Create new!
+            Sign in!
           </Link>
         </Text>
       </Flex>
@@ -39,4 +34,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
