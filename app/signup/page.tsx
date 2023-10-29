@@ -1,10 +1,14 @@
 "use client";
 import React from "react";
-import { Flex, TextField, Button, Text } from "@radix-ui/themes";
+import { Flex, TextField, Button, Text, Callout } from "@radix-ui/themes";
 import AuthLayout from "@/components/AuthLayout";
 import Link from "next/link";
+import useSignUp from "@/hooks/useSignUp";
+import useInputOnChange from "@/lib/useInputOnChange";
 
 const SignUp = () => {
+  const { inputs, inputErrors, loading, onSignUp, setInputs, setInputErrors } =
+    useSignUp();
   return (
     <AuthLayout>
       <Flex direction={"column"} gap={"3"} width={"100%"}>
@@ -16,10 +20,43 @@ const SignUp = () => {
             Sign up to explore a world of possibilities.
           </Text>
         </Flex>
-        <TextField.Input size={"3"} placeholder={"Enter name"} />
-        <TextField.Input size={"3"} placeholder={"Enter email"} />
-        <TextField.Input size={"3"} placeholder={"Enter password"} />
-        <Button size={"3"}>Get Started</Button>
+        {/* INPUT:NAME */}
+        <TextField.Input
+          name={"name"}
+          value={inputs?.name}
+          size={"3"}
+          placeholder={"Enter name"}
+          onChange={(e) => useInputOnChange({ e, setInputs, setInputErrors })()}
+        />
+        {/* INPUT:EMAIL */}
+        <TextField.Input
+          name={"email"}
+          value={inputs?.email}
+          size={"3"}
+          placeholder={"Enter email"}
+          onChange={(e) => useInputOnChange({ e, setInputs, setInputErrors })()}
+        />
+        {/* INPUT:PASSWORD */}
+        <TextField.Input
+          name={"password"}
+          value={inputs?.password}
+          size={"3"}
+          placeholder={"Enter password"}
+          onChange={(e) => useInputOnChange({ e, setInputs, setInputErrors })()}
+        />
+        {/* alert */}
+        {(inputErrors?.name || inputErrors?.email || inputErrors?.password) && (
+          <Callout.Root size="1" color="red">
+            <Callout.Text>
+              {inputErrors?.email || inputErrors?.password}
+            </Callout.Text>
+          </Callout.Root>
+        )}
+        {/* SUBMIT BUTTON */}
+        <Button size={"3"} onClick={onSignUp} disabled={loading}>
+          {loading ? "Loading..." : "Continue"}
+        </Button>
+        {/* SIGN-IN */}
         <Text className="self-center pt-4" weight={"light"}>
           already have an account?{" "}
           <Link
