@@ -16,6 +16,18 @@ const useSignIn = () => {
   });
   const [loading, setLoading] = useState(false);
 
+  // RESTING STATES TO INITIAL
+  const resetStates = () => {
+    setInputs({
+      email: "",
+      password: "",
+    });
+    setInputErrors({
+      email: "",
+      password: "",
+    });
+  };
+
   // ON CLICK
   const onSignIn = async () => {
     // Clear any previous input errors
@@ -55,6 +67,7 @@ const useSignIn = () => {
     if (result?.userId) {
       //@ts-ignore
       toast.success(`Hello 👋, Welcome back!`);
+      resetStates();
     } else {
       setInputErrors((prevErrors) => ({
         ...prevErrors,

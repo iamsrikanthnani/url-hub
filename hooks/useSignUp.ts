@@ -18,6 +18,20 @@ const useSignUp = () => {
   });
   const [loading, setLoading] = useState(false);
 
+  // RESTING STATES TO INITIAL
+  const resetStates = () => {
+    setInputs({
+      name: "",
+      email: "",
+      password: "",
+    });
+    setInputErrors({
+      name: "",
+      email: "",
+      password: "",
+    });
+  };
+
   // ON CLICK
   const onSignUp = async () => {
     // Clear any previous input errors
@@ -62,6 +76,7 @@ const useSignUp = () => {
     const result = await createUserAccount({ name, email, password });
     //@ts-ignore
     if (result?.accountId) {
+      resetStates();
       toast.success(`Account created successfully`);
     } else {
       setInputErrors((prevErrors) => ({

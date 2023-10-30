@@ -40,6 +40,31 @@ const useForgotPassword = () => {
   );
   const [loading, setLoading] = useState(false);
 
+  // RESTING STATES TO INITIAL
+  const resetStates = () => {
+    setInputs(
+      secret && userid
+        ? {
+            password: "",
+            confirmPassword: "",
+          }
+        : {
+            email: "",
+          }
+    );
+    // ERRORS
+    setInputErrors(
+      secret && userid
+        ? {
+            password: "",
+            confirmPassword: "",
+          }
+        : {
+            email: "",
+          }
+    );
+  };
+
   // ON CLICK
   const onForgotPassword = async () => {
     // Clear any previous input errors
@@ -72,6 +97,7 @@ const useForgotPassword = () => {
 
       //@ts-ignore
       if (result?.userId) {
+        resetStates();
         toast.success(`Recovery password link sent successfully`);
       } else {
         setInputErrors((prevErrors) => ({
@@ -127,6 +153,7 @@ const useForgotPassword = () => {
 
       //@ts-ignore
       if (result?.userId) {
+        resetStates();
         toast.success(`New password updated successfully`);
       } else {
         setInputErrors((prevErrors) => ({
