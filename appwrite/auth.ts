@@ -85,7 +85,32 @@ export async function forgotPassword(user: { email: string }) {
   try {
     const session = await account.createRecovery(
       user.email,
-      "http://localhost:3000/"
+      "http://localhost:3000/forgotpassword"
+    );
+
+    return session;
+  } catch (error) {
+    return error;
+  }
+}
+
+/**
+ * password update with an Appwrite account.
+ * @param user - The user object containing password, new password.
+ * @returns The Appwrite session or null if there's an error.
+ */
+export async function updateNewPassword(user: {
+  userid: string;
+  secret: string;
+  password: string;
+  confirmPassword: string;
+}) {
+  try {
+    const session = await account.updateRecovery(
+      user.userid,
+      user.secret,
+      user.password,
+      user.confirmPassword
     );
 
     return session;

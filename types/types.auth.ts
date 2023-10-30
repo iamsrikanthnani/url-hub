@@ -15,3 +15,9 @@ export type SignInInputs = {
 export type ForgotPasswordInputs = {
   email: string;
 };
+
+// UPDATE-PASSWORD
+export type UpdateNewPasswordInputs = {
+  password: string;
+  confirmPassword: string;
+};

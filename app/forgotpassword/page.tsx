@@ -14,6 +14,8 @@ const ForgotPassword = () => {
     onForgotPassword,
     setInputs,
     setInputErrors,
+    isPasswordRecovery,
+    onUpdateNewPassword,
   } = useForgotPassword();
 
   return (
@@ -27,23 +29,67 @@ const ForgotPassword = () => {
             Enter your email, and we'll send a reset link.
           </Text>
         </Flex>
+        {/* PASSWORD RECOVERY INPUTS */}
+        {"password" in inputs && isPasswordRecovery && (
+          <TextField.Input
+            name={"password"}
+            value={inputs.password}
+            onChange={(e) =>
+              useInputOnChange({ e, setInputs, setInputErrors })()
+            }
+            size={"3"}
+            placeholder={"Enter new password"}
+          />
+        )}
+        {"confirmPassword" in inputs && isPasswordRecovery && (
+          <TextField.Input
+            name={"confirmPassword"}
+            value={inputs.confirmPassword}
+            onChange={(e) =>
+              useInputOnChange({ e, setInputs, setInputErrors })()
+            }
+            size={"3"}
+            placeholder={"Enter confirm password"}
+          />
+        )}
         {/* INPUT:EMAIL */}
-        <TextField.Input
-          name={"email"}
-          value={inputs.email}
-          onChange={(e) => useInputOnChange({ e, setInputs, setInputErrors })()}
-          size={"3"}
-          placeholder={"Enter email"}
-        />
+        {"email" in inputs && (
+          <TextField.Input
+            name={"email"}
+            value={inputs.email}
+            onChange={(e) =>
+              useInputOnChange({ e, setInputs, setInputErrors })()
+            }
+            size={"3"}
+            placeholder={"Enter email"}
+          />
+        )}
         {/* ALERT */}
-        {inputErrors?.email && (
+        {/* BAD, BUT IT'LL WORK :( */}
+        {(("email" in inputErrors && inputErrors.email) ||
+          ("password" in inputErrors && inputErrors.password) ||
+          ("confirmPassword" in inputErrors &&
+            inputErrors.confirmPassword)) && (
           <Callout.Root size="1" color="red">
-            <Callout.Text>{inputErrors?.email}</Callout.Text>
+            <Callout.Text>
+              {("email" in inputErrors && inputErrors.email) ||
+                ("password" in inputErrors && inputErrors.password) ||
+                ("confirmPassword" in inputErrors &&
+                  inputErrors.confirmPassword)}
+            </Callout.Text>
           </Callout.Root>
         )}
         {/* SUBMIT */}
-        <Button size={"3"} disabled={loading} onClick={onForgotPassword}>
-          {loading ? "Loading" : "Reset Password"}
+        <Button
+          size={"3"}
+          disabled={loading}
+          onClick={isPasswordRecovery ? onUpdateNewPassword : onForgotPassword}
+        >
+          {loading
+            ? "Loading"
+            : isPasswordRecovery
+            ? "Update password"
+            : "Reset password"}
         </Button>
         {/* SIGN-IN */}
         <Text className="self-center pt-4" weight={"light"}>
