@@ -77,6 +77,24 @@ export async function signInAccount(user: { email: string; password: string }) {
 }
 
 /**
+ * forgot password with an Appwrite account.
+ * @param user - The user object containing email.
+ * @returns The Appwrite session or null if there's an error.
+ */
+export async function forgotPassword(user: { email: string }) {
+  try {
+    const session = await account.createRecovery(
+      user.email,
+      "http://localhost:3000/"
+    );
+
+    return session;
+  } catch (error) {
+    return error;
+  }
+}
+
+/**
  * Get the current Appwrite account.
  * @returns The current Appwrite account or null if there's an error.
  */
