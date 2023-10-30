@@ -2,6 +2,7 @@ import { SignInInputs } from "@/types/types.auth";
 import { useState } from "react";
 import { signInAccount } from "@/appwrite/auth";
 import { emailRegex } from "@/lib/reg";
+import { toast } from "sonner";
 
 const useSignIn = () => {
   // STATES
@@ -52,7 +53,8 @@ const useSignIn = () => {
     const result = await signInAccount({ email, password });
     //@ts-ignore
     if (result?.userId) {
-      console.log("used logged in");
+      //@ts-ignore
+      toast.success(`Hello 👋, Welcome back!`);
     } else {
       setInputErrors((prevErrors) => ({
         ...prevErrors,

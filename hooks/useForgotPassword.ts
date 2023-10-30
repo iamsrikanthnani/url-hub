@@ -5,6 +5,7 @@ import {
 import { useState } from "react";
 import { forgotPassword, updateNewPassword } from "@/appwrite/auth";
 import { emailRegex } from "@/lib/reg";
+import { toast } from "sonner";
 
 const useForgotPassword = () => {
   // READING URL PARAMS:
@@ -71,7 +72,7 @@ const useForgotPassword = () => {
 
       //@ts-ignore
       if (result?.userId) {
-        console.log("used logged in");
+        toast.success(`Recovery password link sent successfully`);
       } else {
         setInputErrors((prevErrors) => ({
           ...prevErrors,
@@ -126,7 +127,7 @@ const useForgotPassword = () => {
 
       //@ts-ignore
       if (result?.userId) {
-        console.log("used logged in");
+        toast.success(`New password updated successfully`);
       } else {
         setInputErrors((prevErrors) => ({
           ...prevErrors,

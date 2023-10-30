@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Theme, ThemePanel } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
         <Theme accentColor="iris" panelBackground="solid" radius="large">
           {/* <ThemePanel/> */}
           {children}
+          <Toaster richColors />
         </Theme>
       </body>
     </html>

@@ -2,6 +2,7 @@ import { NewUser } from "@/types/types.auth";
 import { useState } from "react";
 import { createUserAccount } from "@/appwrite/auth";
 import { emailRegex } from "@/lib/reg";
+import { toast } from "sonner";
 
 const useSignUp = () => {
   // STATES
@@ -61,7 +62,7 @@ const useSignUp = () => {
     const result = await createUserAccount({ name, email, password });
     //@ts-ignore
     if (result?.accountId) {
-      console.log("user signed up");
+      toast.success(`Account created successfully`);
     } else {
       setInputErrors((prevErrors) => ({
         ...prevErrors,
