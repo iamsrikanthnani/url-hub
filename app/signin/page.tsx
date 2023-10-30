@@ -22,6 +22,7 @@ const SignIn = () => {
             Securely sign in with your email and password.
           </Text>
         </Flex>
+        {/* INPUT:EMAIL */}
         <TextField.Input
           name="email"
           value={inputs.email}
@@ -29,6 +30,7 @@ const SignIn = () => {
           size={"3"}
           placeholder={"Enter email"}
         />
+        {/* INPUT:PASSWORD */}
         <TextField.Input
           name="password"
           value={inputs.password}
@@ -36,6 +38,7 @@ const SignIn = () => {
           size={"3"}
           placeholder={"Enter password"}
         />
+        {/* ALERT */}
         {(inputErrors?.email || inputErrors?.password) && (
           <Callout.Root size="1" color="red">
             <Callout.Text>
@@ -43,16 +46,18 @@ const SignIn = () => {
             </Callout.Text>
           </Callout.Root>
         )}
-
+        {/* SUBMIT */}
         <Button size={"3"} onClick={onSignIn} disabled={loading}>
           {loading ? "Loading..." : "Continue"}
         </Button>
+        {/* FORGOT PASSWORD */}
         <Link
           className="self-end rt-Text rt-reset rt-Link rt-underline-auto rt-r-weight-regular"
           href={"/forgotpassword"}
         >
           Forgot password?
         </Link>
+        {/* SIGN-UP */}
         <Text className="self-center pt-4" weight={"light"}>
           Don't have an account?{" "}
           <Link

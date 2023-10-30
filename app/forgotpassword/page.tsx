@@ -27,6 +27,7 @@ const ForgotPassword = () => {
             Enter your email, and we'll send a reset link.
           </Text>
         </Flex>
+        {/* INPUT:EMAIL */}
         <TextField.Input
           name={"email"}
           value={inputs.email}
@@ -34,15 +35,17 @@ const ForgotPassword = () => {
           size={"3"}
           placeholder={"Enter email"}
         />
+        {/* ALERT */}
         {inputErrors?.email && (
           <Callout.Root size="1" color="red">
             <Callout.Text>{inputErrors?.email}</Callout.Text>
           </Callout.Root>
         )}
+        {/* SUBMIT */}
         <Button size={"3"} disabled={loading} onClick={onForgotPassword}>
           {loading ? "Loading" : "Reset Password"}
         </Button>
-
+        {/* SIGN-IN */}
         <Text className="self-center pt-4" weight={"light"}>
           Do you remember your password?{" "}
           <Link

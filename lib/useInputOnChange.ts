@@ -15,6 +15,7 @@ const useInputOnChange = ({
   setInputs,
   setInputErrors,
 }: OnChangeFunction) => {
+  // ON INPUT CHANGE(setting value based on input name)
   const onChange = () => {
     const { name, value } = e.target;
 

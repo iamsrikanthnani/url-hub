@@ -4,6 +4,7 @@ import { signInAccount } from "@/appwrite/auth";
 import { emailRegex } from "@/lib/reg";
 
 const useSignIn = () => {
+  // STATES
   const [inputs, setInputs] = useState<SignInInputs>({
     email: "",
     password: "",
@@ -14,6 +15,7 @@ const useSignIn = () => {
   });
   const [loading, setLoading] = useState(false);
 
+  // ON CLICK
   const onSignIn = async () => {
     // Clear any previous input errors
     setInputErrors({ email: "", password: "" });
@@ -62,6 +64,7 @@ const useSignIn = () => {
     setLoading(false);
   };
 
+  // RETURN
   return {
     inputs,
     inputErrors,

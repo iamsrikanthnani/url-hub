@@ -4,6 +4,7 @@ import { forgotPassword } from "@/appwrite/auth";
 import { emailRegex } from "@/lib/reg";
 
 const useForgotPassword = () => {
+  // STATES
   const [inputs, setInputs] = useState<ForgotPasswordInputs>({
     email: "",
   });
@@ -12,6 +13,7 @@ const useForgotPassword = () => {
   });
   const [loading, setLoading] = useState(false);
 
+  // ON CLICK
   const onForgotPassword = async () => {
     // Clear any previous input errors
     setInputErrors({ email: "" });
@@ -27,6 +29,7 @@ const useForgotPassword = () => {
       }));
       return;
     }
+    // EMAIL VALIDATION
     if (!emailRegex.test(email)) {
       setInputErrors((prevErrors) => ({
         ...prevErrors,
@@ -54,6 +57,7 @@ const useForgotPassword = () => {
     setLoading(false);
   };
 
+  // RETURN
   return {
     inputs,
     inputErrors,
