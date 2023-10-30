@@ -1,10 +1,23 @@
 "use client";
 import React from "react";
-import { Flex, TextField, Button, Text } from "@radix-ui/themes";
+import { Flex, TextField, Button, Text, Callout } from "@radix-ui/themes";
 import AuthLayout from "@/components/AuthLayout";
 import Link from "next/link";
+import useInputOnChange from "@/lib/useInputOnChange";
+import useForgotPassword from "@/hooks/useForgotPassword";
 
 const ForgotPassword = () => {
+  const {
+    inputs,
+    inputErrors,
+    loading,
+    onForgotPassword,
+    setInputs,
+    setInputErrors,
+    isPasswordRecovery,
+    onUpdateNewPassword,
+  } = useForgotPassword();
+
   return (
     <AuthLayout>
       <Flex direction={"column"} gap={"3"} width={"100%"}>
@@ -16,13 +29,73 @@ const ForgotPassword = () => {
             Enter your email, and we'll send a reset link.
           </Text>
         </Flex>
-        <TextField.Input size={"3"} placeholder={"Enter email"} />
-        <Button size={"3"}>Reset Password</Button>
-
+        {/* PASSWORD RECOVERY INPUTS */}
+        {"password" in inputs && isPasswordRecovery && (
+          <TextField.Input
+            name={"password"}
+            value={inputs.password}
+            onChange={(e) =>
+              useInputOnChange({ e, setInputs, setInputErrors })()
+            }
+            size={"3"}
+            placeholder={"Enter new password"}
+          />
+        )}
+        {"confirmPassword" in inputs && isPasswordRecovery && (
+          <TextField.Input
+            name={"confirmPassword"}
+            value={inputs.confirmPassword}
+            onChange={(e) =>
+              useInputOnChange({ e, setInputs, setInputErrors })()
+            }
+            size={"3"}
+            placeholder={"Enter confirm password"}
+          />
+        )}
+        {/* INPUT:EMAIL */}
+        {"email" in inputs && (
+          <TextField.Input
+            name={"email"}
+            value={inputs.email}
+            onChange={(e) =>
+              useInputOnChange({ e, setInputs, setInputErrors })()
+            }
+            size={"3"}
+            placeholder={"Enter email"}
+          />
+        )}
+        {/* ALERT */}
+        {/* BAD, BUT IT'LL WORK :( */}
+        {(("email" in inputErrors && inputErrors.email) ||
+          ("password" in inputErrors && inputErrors.password) ||
+          ("confirmPassword" in inputErrors &&
+            inputErrors.confirmPassword)) && (
+          <Callout.Root size="1" color="red">
+            <Callout.Text>
+              {("email" in inputErrors && inputErrors.email) ||
+                ("password" in inputErrors && inputErrors.password) ||
+                ("confirmPassword" in inputErrors &&
+                  inputErrors.confirmPassword)}
+            </Callout.Text>
+          </Callout.Root>
+        )}
+        {/* SUBMIT */}
+        <Button
+          size={"3"}
+          disabled={loading}
+          onClick={isPasswordRecovery ? onUpdateNewPassword : onForgotPassword}
+        >
+          {loading
+            ? "Loading"
+            : isPasswordRecovery
+            ? "Update password"
+            : "Reset password"}
+        </Button>
+        {/* SIGN-IN */}
         <Text className="self-center pt-4" weight={"light"}>
           Do you remember your password?{" "}
           <Link
-            href={"/signup"}
+            href={"/signin"}
             className="self-end rt-Text rt-reset rt-Link rt-underline-auto rt-r-weight-medium"
           >
             Sign in!
