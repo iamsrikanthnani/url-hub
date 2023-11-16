@@ -10,11 +10,7 @@ type OnChangeFunction = {
   setInputErrors: React.Dispatch<React.SetStateAction<any>>;
 };
 
-const useInputOnChange = ({
-  e,
-  setInputs,
-  setInputErrors,
-}: OnChangeFunction) => {
+const InputOnChange = ({ e, setInputs, setInputErrors }: OnChangeFunction) => {
   // ON INPUT CHANGE(setting value based on input name)
   const onChange = () => {
     const { name, value } = e.target;
@@ -32,4 +28,4 @@ const useInputOnChange = ({
   return onChange;
 };
 
-export default useInputOnChange;
+export default InputOnChange;

@@ -4,7 +4,7 @@ import { Flex, TextField, Button, Text, Callout } from "@radix-ui/themes";
 import AuthLayout from "@/components/AuthLayout";
 import Link from "next/link";
 import useSignUp from "@/hooks/useSignUp";
-import useInputOnChange from "@/lib/useInputOnChange";
+import InputOnChange from "@/lib/InputOnChange";
 
 const SignUp = () => {
   const { inputs, inputErrors, loading, onSignUp, setInputs, setInputErrors } =
@@ -26,7 +26,7 @@ const SignUp = () => {
           value={inputs?.name}
           size={"3"}
           placeholder={"Enter name"}
-          onChange={(e) => useInputOnChange({ e, setInputs, setInputErrors })()}
+          onChange={(e) => InputOnChange({ e, setInputs, setInputErrors })()}
         />
         {/* INPUT:EMAIL */}
         <TextField.Input
@@ -34,7 +34,7 @@ const SignUp = () => {
           value={inputs?.email}
           size={"3"}
           placeholder={"Enter email"}
-          onChange={(e) => useInputOnChange({ e, setInputs, setInputErrors })()}
+          onChange={(e) => InputOnChange({ e, setInputs, setInputErrors })()}
         />
         {/* INPUT:PASSWORD */}
         <TextField.Input
@@ -42,7 +42,7 @@ const SignUp = () => {
           value={inputs?.password}
           size={"3"}
           placeholder={"Enter password"}
-          onChange={(e) => useInputOnChange({ e, setInputs, setInputErrors })()}
+          onChange={(e) => InputOnChange({ e, setInputs, setInputErrors })()}
         />
         {/* alert */}
         {(inputErrors?.name || inputErrors?.email || inputErrors?.password) && (
