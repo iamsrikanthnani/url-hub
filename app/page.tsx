@@ -1,9 +1,17 @@
-import { Button } from "@radix-ui/themes";
+import {
+  Avatar,
+  Badge,
+  Button,
+  DropdownMenu,
+  Flex,
+  Text,
+} from "@radix-ui/themes";
+import Header from "./components/Header";
 
 export default function Home() {
   return (
-    <div>
-      <Button>Hello world</Button>
-    </div>
+    <Flex direction={"column"}>
+      <Header />
+    </Flex>
   );
 }

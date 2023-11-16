@@ -10,4 +10,8 @@
   .rt-Text {
     user-select: none;
   }
+
+  .rt-Badge {
+    cursor: pointer;
+  }
 }
