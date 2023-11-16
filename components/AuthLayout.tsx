@@ -1,6 +1,5 @@
 import React from "react";
 import { Flex, Text, Link } from "@radix-ui/themes";
-import Image from "next/image";
 
 type AuthLayoutProps = {
   children: React.ReactNode;
@@ -12,7 +11,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       {/* LHS */}
       <div className="hidden md:block md:w-1/2 lg:w-1/2 relative">
         {/* unsplash random image */}
-        <Image
+        <img
           src="https://source.unsplash.com/random/?space"
           alt="unsplash random image"
           className="object-cover absolute inset-0 w-full h-full"
