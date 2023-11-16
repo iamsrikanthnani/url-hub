@@ -7,12 +7,13 @@ import { useState } from "react";
 import { forgotPassword, updateNewPassword } from "@/appwrite/auth";
 import { emailRegex } from "@/lib/reg";
 import { toast } from "sonner";
+import { useSearchParams } from "next/navigation";
 
 const useForgotPassword = () => {
   // READING URL PARAMS:
-  const urlParams = new URLSearchParams(window.location.search);
-  const secret = urlParams.get("secret") || null;
-  const userid = urlParams.get("userId") || null;
+  const searchParams = useSearchParams();
+  const secret = searchParams.get("secret") || null;
+  const userid = searchParams.get("userId") || null;
 
   // STATES
   const [inputs, setInputs] = useState<
