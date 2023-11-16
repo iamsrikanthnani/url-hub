@@ -3,6 +3,7 @@ import { useState } from "react";
 import { signInAccount } from "@/appwrite/auth";
 import { emailRegex } from "@/lib/reg";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const useSignIn = () => {
   // STATES
@@ -15,9 +16,10 @@ const useSignIn = () => {
     password: "",
   });
   const [loading, setLoading] = useState(false);
-
+  const router = useRouter();
   // RESTING STATES TO INITIAL
   const resetStates = () => {
+    setLoading(false);
     setInputs({
       email: "",
       password: "",
@@ -65,6 +67,7 @@ const useSignIn = () => {
     const result = await signInAccount({ email, password });
     //@ts-ignore
     if (result?.userId) {
+      router.push("/");
       //@ts-ignore
       toast.success(`Hello 👋, Welcome back!`);
       resetStates();
