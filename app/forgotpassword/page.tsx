@@ -3,7 +3,7 @@ import React from "react";
 import { Flex, TextField, Button, Text, Callout } from "@radix-ui/themes";
 import AuthLayout from "@/components/AuthLayout";
 import Link from "next/link";
-import useInputOnChange from "@/lib/useInputOnChange";
+import InputOnChange from "@/lib/InputOnChange";
 import useForgotPassword from "@/hooks/useForgotPassword";
 
 const ForgotPassword = () => {
@@ -34,9 +34,7 @@ const ForgotPassword = () => {
           <TextField.Input
             name={"password"}
             value={inputs.password}
-            onChange={(e) =>
-              useInputOnChange({ e, setInputs, setInputErrors })()
-            }
+            onChange={(e) => InputOnChange({ e, setInputs, setInputErrors })()}
             size={"3"}
             placeholder={"Enter new password"}
           />
@@ -45,9 +43,7 @@ const ForgotPassword = () => {
           <TextField.Input
             name={"confirmPassword"}
             value={inputs.confirmPassword}
-            onChange={(e) =>
-              useInputOnChange({ e, setInputs, setInputErrors })()
-            }
+            onChange={(e) => InputOnChange({ e, setInputs, setInputErrors })()}
             size={"3"}
             placeholder={"Enter confirm password"}
           />
@@ -57,9 +53,7 @@ const ForgotPassword = () => {
           <TextField.Input
             name={"email"}
             value={inputs.email}
-            onChange={(e) =>
-              useInputOnChange({ e, setInputs, setInputErrors })()
-            }
+            onChange={(e) => InputOnChange({ e, setInputs, setInputErrors })()}
             size={"3"}
             placeholder={"Enter email"}
           />

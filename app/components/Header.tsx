@@ -8,6 +8,7 @@ import {
   Flex,
   Text,
 } from "@radix-ui/themes";
+import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
@@ -20,7 +21,7 @@ const Header = () => {
   return (
     <Flex className="bg-slate-50" p={"3"} justify={"between"}>
       <div>
-        <img src="/vercel.svg" alt="Vercel Logo" width={100} height={24} />
+        <Image src="/vercel.svg" alt="Vercel Logo" width={100} height={24} />
       </div>
       {isAuthenticated ? (
         <Flex gap={"4"} align={"center"}>

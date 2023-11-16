@@ -5,7 +5,7 @@ import AuthLayout from "@/components/AuthLayout";
 import Link from "next/link";
 import { signInAccount } from "@/appwrite/auth";
 import useSignIn from "@/hooks/useSignIn";
-import useInputOnChange from "@/lib/useInputOnChange";
+import InputOnChange from "@/lib/InputOnChange";
 
 const SignIn = () => {
   const { inputs, inputErrors, loading, onSignIn, setInputs, setInputErrors } =
@@ -26,7 +26,7 @@ const SignIn = () => {
         <TextField.Input
           name="email"
           value={inputs.email}
-          onChange={(e) => useInputOnChange({ e, setInputs, setInputErrors })()}
+          onChange={(e) => InputOnChange({ e, setInputs, setInputErrors })()}
           size={"3"}
           placeholder={"Enter email"}
         />
@@ -34,7 +34,7 @@ const SignIn = () => {
         <TextField.Input
           name="password"
           value={inputs.password}
-          onChange={(e) => useInputOnChange({ e, setInputs, setInputErrors })()}
+          onChange={(e) => InputOnChange({ e, setInputs, setInputErrors })()}
           size={"3"}
           placeholder={"Enter password"}
         />
