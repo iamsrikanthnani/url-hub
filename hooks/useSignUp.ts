@@ -3,8 +3,10 @@ import { useState } from "react";
 import { createUserAccount } from "@/appwrite/auth";
 import { emailRegex } from "@/lib/reg";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const useSignUp = () => {
+  const router = useRouter();
   // STATES
   const [inputs, setInputs] = useState<NewUser>({
     name: "",
@@ -76,6 +78,7 @@ const useSignUp = () => {
     const result = await createUserAccount({ name, email, password });
     //@ts-ignore
     if (result?.accountId) {
+      router.replace("/signin");
       resetStates();
       toast.success(`Account created successfully`);
     } else {

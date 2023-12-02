@@ -13,15 +13,16 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
-  const { isLoading, isAuthenticated, setIsAuthenticated, user, setUser } =
+  const { isAuthenticated, setIsAuthenticated, user, setUser } =
     useAuthContext();
 
-  if (isLoading) {
-    return null;
-  }
-
   return (
-    <Flex className="bg-slate-50" p={"3"} justify={"between"}>
+    <Flex
+      position={"fixed"}
+      className="bg-slate-50 z-50 w-full"
+      p={"3"}
+      justify={"between"}
+    >
       <div>
         <Image src="/vercel.svg" alt="Vercel Logo" width={100} height={24} />
       </div>
