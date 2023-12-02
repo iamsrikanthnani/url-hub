@@ -47,7 +47,8 @@ export default function Home() {
           gap={"4"}
           className="flex flex-wrap justify-center"
         >
-          {list?.length !== 0 &&
+          {Array.isArray(list) &&
+            list?.length !== 0 &&
             list?.map((item: any, index: number) => (
               <Item
                 key={`website-${index}`}
