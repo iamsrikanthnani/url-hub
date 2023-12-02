@@ -32,6 +32,7 @@ const ForgotPassword = () => {
         {/* PASSWORD RECOVERY INPUTS */}
         {"password" in inputs && isPasswordRecovery && (
           <TextField.Input
+            type={"password"}
             name={"password"}
             value={inputs.password}
             onChange={(e) => InputOnChange({ e, setInputs, setInputErrors })()}
@@ -41,6 +42,7 @@ const ForgotPassword = () => {
         )}
         {"confirmPassword" in inputs && isPasswordRecovery && (
           <TextField.Input
+            type={"password"}
             name={"confirmPassword"}
             value={inputs.confirmPassword}
             onChange={(e) => InputOnChange({ e, setInputs, setInputErrors })()}

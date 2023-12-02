@@ -4,8 +4,11 @@ import { signInAccount } from "@/appwrite/auth";
 import { emailRegex } from "@/lib/reg";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { useAuthContext } from "@/context/auth";
 
 const useSignIn = () => {
+  //context
+  const { checkAuthUser } = useAuthContext();
   // STATES
   const [inputs, setInputs] = useState<SignInInputs>({
     email: "",
@@ -67,7 +70,8 @@ const useSignIn = () => {
     const result = await signInAccount({ email, password });
     //@ts-ignore
     if (result?.userId) {
-      router.push("/");
+      checkAuthUser();
+      router.replace("/");
       //@ts-ignore
       toast.success(`Hello 👋, Welcome back!`);
       resetStates();

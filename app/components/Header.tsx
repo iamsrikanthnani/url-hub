@@ -1,4 +1,5 @@
 "use client";
+import { signOutAccount } from "@/appwrite/auth";
 import { useAuthContext } from "@/context/auth";
 import {
   Avatar,
@@ -12,7 +13,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
-  const { isLoading, isAuthenticated, user } = useAuthContext();
+  const { isLoading, isAuthenticated, setIsAuthenticated, user, setUser } =
+    useAuthContext();
 
   if (isLoading) {
     return null;
@@ -39,7 +41,16 @@ const Header = () => {
               <DropdownMenu.Item shortcut="⌘ E">About</DropdownMenu.Item>
               <DropdownMenu.Item shortcut="⌘ D">Source code</DropdownMenu.Item>
               <DropdownMenu.Separator />
-              <DropdownMenu.Item shortcut="⌘ N" color="red">
+              <DropdownMenu.Item
+                shortcut="⌘ N"
+                color="red"
+                onClick={() => {
+                  signOutAccount();
+                  setIsAuthenticated(false);
+                  //@ts-ignore
+                  setUser(null);
+                }}
+              >
                 Sign out
               </DropdownMenu.Item>
             </DropdownMenu.Content>

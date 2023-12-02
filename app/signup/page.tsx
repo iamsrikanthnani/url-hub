@@ -38,6 +38,7 @@ const SignUp = () => {
         />
         {/* INPUT:PASSWORD */}
         <TextField.Input
+          type={"password"}
           name={"password"}
           value={inputs?.password}
           size={"3"}

@@ -62,21 +62,25 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  // auto redirection between pages, comment this useEffect if you dont want the auto redirection
   useEffect(() => {
-    const cookieFallback = localStorage.getItem("cookieFallback");
-    if (
-      cookieFallback === "[]" ||
-      cookieFallback === null ||
-      cookieFallback === undefined
-    ) {
-      router.push("/signin");
-    } else {
-      router.push("/");
-    }
-
     checkAuthUser();
-  }, [router]);
+  }, []);
+
+  // auto redirection between pages, comment this useEffect if you dont want the auto redirection
+  // useEffect(() => {
+  //   const cookieFallback = localStorage.getItem("cookieFallback");
+  //   if (
+  //     cookieFallback === "[]" ||
+  //     cookieFallback === null ||
+  //     cookieFallback === undefined
+  //   ) {
+  //     router.push("/signin");
+  //   } else {
+  //     router.push("/");
+  //   }
+
+  //   checkAuthUser();
+  // }, [router]);
 
   const value = {
     user,
