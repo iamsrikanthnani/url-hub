@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./public/logo.png" alt="Logo" width="100">
+  <img src="./public/banner.png" alt="Logo" width="800">
 </div>
 
 # URL-Hub 🌐
