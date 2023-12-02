@@ -21,8 +21,11 @@ const Add = ({ fetchData, list }: { fetchData: () => void; list: any }) => {
   const onAdd = async () => {
     const urlRegex =
       /^(?:(ftp|http|https):\/\/)?(?:www\.)?([a-zA-Z0-9-]+)\.([a-zA-Z]{2,})\b(?:\/\S*)?$/;
-
-    const isAlreadyAdded = list.some((item: any) => item.website === input);
+    // Remove www, http, or https from the input
+    const cleanInput = input.replace(/^(ftp|http|https):\/\/(?:www\.)?/, "");
+    const isAlreadyAdded = list.some(
+      (item: any) => item.website === cleanInput
+    );
 
     if (isAlreadyAdded) {
       toast.error("This website has already been added");
@@ -31,12 +34,6 @@ const Add = ({ fetchData, list }: { fetchData: () => void; list: any }) => {
 
     if (input && urlRegex.test(input)) {
       try {
-        // Remove www, http, or https from the input
-        const cleanInput = input.replace(
-          /^(ftp|http|https):\/\/(?:www\.)?/,
-          ""
-        );
-
         const create = await createWebsite({
           user: user.id,
           website: cleanInput,
