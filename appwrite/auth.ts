@@ -85,7 +85,7 @@ export async function forgotPassword(user: { email: string }) {
   try {
     const session = await account.createRecovery(
       user.email,
-      "http://localhost:3000/forgotpassword"
+      "https://url-hub.vercel.app/forgotpassword"
     );
 
     return session;

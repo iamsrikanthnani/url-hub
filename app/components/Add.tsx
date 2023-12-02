@@ -62,11 +62,12 @@ const Add = ({ fetchData, list }: { fetchData: () => void; list: any }) => {
       gap={"1"}
       align={"center"}
     >
-      <Text size={"6"} weight={"medium"}>
-        Add any useful website link
+      <Text size={"4"} weight={"medium"}>
+        Share a Valuable Website Link
       </Text>
       <Text size={"2"} color="gray">
-        let the world know about that website
+        Spread the word about a helpful website and contribute to our growing
+        knowledge hub.
       </Text>
       <TextField.Root size={"3"} style={{ minWidth: 400 }}>
         <TextField.Input

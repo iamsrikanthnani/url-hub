@@ -1,3 +1,4 @@
+"use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import { UserType } from "@/types";
 import { getCurrentUser } from "@/appwrite/auth";

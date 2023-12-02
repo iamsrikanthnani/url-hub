@@ -7,12 +7,22 @@ import {
   Button,
   DropdownMenu,
   Flex,
+  Strong,
   Text,
+  TextField,
 } from "@radix-ui/themes";
 import Image from "next/image";
 import Link from "next/link";
 
-const Header = () => {
+const Header = ({
+  total,
+  search,
+  setSearch,
+}: {
+  total: number;
+  search: string;
+  setSearch: React.Dispatch<React.SetStateAction<string>>;
+}) => {
   const { isAuthenticated, setIsAuthenticated, user, setUser } =
     useAuthContext();
 
@@ -23,9 +33,27 @@ const Header = () => {
       p={"3"}
       justify={"between"}
     >
-      <div>
-        <Image src="/vercel.svg" alt="Vercel Logo" width={100} height={24} />
+      <Flex>
+        <Image
+          src="/logo.png"
+          alt="Vercel Logo"
+          width={100}
+          height={10}
+          style={{ height: 30 }}
+        />
+        <Text size={"6"} ml={"1"}>
+          <Strong> -{total}</Strong>
+        </Text>
+      </Flex>
+      <div className="hidden md:block ">
+        <TextField.Input
+          value={search}
+          onChange={(e) => setSearch(e?.target?.value)}
+          placeholder="search..."
+          style={{ minWidth: 300 }}
+        />
       </div>
+
       {isAuthenticated ? (
         <Flex gap={"4"} align={"center"}>
           <Text>Welcome, {user.name}</Text>
@@ -39,11 +67,21 @@ const Header = () => {
               />
             </DropdownMenu.Trigger>
             <DropdownMenu.Content>
-              <DropdownMenu.Item shortcut="⌘ E">About</DropdownMenu.Item>
-              <DropdownMenu.Item shortcut="⌘ D">Source code</DropdownMenu.Item>
+              <DropdownMenu.Label>{user.name}</DropdownMenu.Label>
+              <DropdownMenu.Label>{user.email}</DropdownMenu.Label>
+              <DropdownMenu.Separator />
+              <Link
+                target="_blank"
+                href={"https://github.com/iamsrikanthnani/url-hub"}
+              >
+                <DropdownMenu.Item className="cursor-pointer">
+                  Source code
+                </DropdownMenu.Item>
+              </Link>
+
               <DropdownMenu.Separator />
               <DropdownMenu.Item
-                shortcut="⌘ N"
+                className="cursor-pointer"
                 color="red"
                 onClick={() => {
                   signOutAccount();

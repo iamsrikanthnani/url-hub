@@ -124,7 +124,15 @@ const Item = ({
         </Text>
       </Flex>
 
-      <Text as="p" size="3">
+      <Text
+        as="p"
+        size="3"
+        style={{
+          overflow: "hidden",
+          whiteSpace: "nowrap",
+          textOverflow: "ellipsis",
+        }}
+      >
         <Strong>{item?.meta?.title}</Strong>
       </Text>
       <ScrollArea scrollbars="vertical" radius="full" style={{ height: 60 }}>
@@ -141,8 +149,8 @@ const Item = ({
           <Link href={"http://" + url} className="some classes" target="_blank">
             <OpenInNewWindowIcon
               color="var(--accent-9)"
-              width={24}
-              height={24}
+              width={20}
+              height={20}
               className="cursor-pointer"
             />
           </Link>
@@ -150,8 +158,8 @@ const Item = ({
           {currentUser?.id === user?.$id && (
             <TrashIcon
               color="red"
-              width={24}
-              height={24}
+              width={20}
+              height={20}
               className="cursor-pointer"
               onClick={onDelete}
             />

@@ -1,6 +1,7 @@
 {
-  "name": "next-appwrite-radix-starter-kit",
+  "name": "url-hub",
   "version": "0.1.0",
+  "description": "A web app for sharing and discovering valuable website links.",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,6 +9,22 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "keywords": [
+    "web app",
+    "links",
+    "sharing",
+    "discovery"
+  ],
+  "author": "Srikanth nani",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamsrikanthnani/url-hub.git"
+  },
+  "bugs": {
+    "url": "https://github.com/iamsrikanthnani/url-hub/issues"
+  },
+  "homepage": "https://url-hub.vercel.app/",
   "dependencies": {
     "@radix-ui/react-icons": "^1.3.0",
     "@radix-ui/themes": "^2.0.0",
