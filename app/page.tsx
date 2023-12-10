@@ -60,23 +60,15 @@ export default function Home() {
           total={Array.isArray(list) && list?.length !== 0 ? list?.length : 0}
           search={search}
           setSearch={setSearch}
+          fetchData={fetchData}
+          list={list}
         />
       )}
-      <Flex
-        className={isAuthenticated ? "mt-16" : "mt-20"}
-        mb={"5"}
-        direction={"column"}
-        align={"center"}
-      >
-        {!isLoading && isAuthenticated && (
+      <Flex className={"mt-8 ml-8 mr-8"} mb={"5"} direction={"column"}>
+        {/* {!isLoading && isAuthenticated && (
           <Add fetchData={fetchData} list={list} />
-        )}
-        <Flex
-          justify={"center"}
-          align={"center"}
-          gap={"4"}
-          className="flex flex-wrap justify-center"
-        >
+        )} */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 flex-wrap justify-center gap-3">
           {Array.isArray(filteredList) &&
             filteredList?.length !== 0 &&
             filteredList
@@ -101,7 +93,7 @@ export default function Home() {
           {!isLoading && filteredList?.length === 0 && (
             <Text size={"7"}>Nothing here...</Text>
           )}
-        </Flex>
+        </div>
       </Flex>
     </Flex>
   );

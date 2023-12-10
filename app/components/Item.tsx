@@ -109,7 +109,7 @@ const Item = ({
             display: "block",
             objectFit: "cover",
             width: "100%",
-            height: 140,
+            height: 100,
             backgroundColor: "var(--gray-5)",
           }}
         />
@@ -126,7 +126,7 @@ const Item = ({
 
       <Text
         as="p"
-        size="3"
+        size="2"
         style={{
           overflow: "hidden",
           whiteSpace: "nowrap",
@@ -136,14 +136,20 @@ const Item = ({
         <Strong>{item?.meta?.title}</Strong>
       </Text>
       <ScrollArea scrollbars="vertical" radius="full" style={{ height: 60 }}>
-        <Text as="p" size="2" color="gray">
+        <Text as="p" size="1" color="gray">
           {item?.meta?.description}
         </Text>
       </ScrollArea>
       <Flex justify={"between"} mt={"2"}>
-        <Flex gap={"2"}>
-          <Avatar radius="full" variant="solid" fallback={"S"} size={"1"} />
-          <Text size="3">{user?.name}</Text>
+        <Flex gap={"1"} justify={"center"} align={"center"}>
+          <Avatar
+            radius="full"
+            variant="solid"
+            fallback={"S"}
+            size={"1"}
+            style={{ width: 18, height: 18 }}
+          />
+          <Text size="2">{user?.name}</Text>
         </Flex>
         <Flex gap={"2"}>
           <Link href={"http://" + url} className="some classes" target="_blank">
