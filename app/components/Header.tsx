@@ -137,7 +137,10 @@ const Header = ({
                   </Button>
                 </AlertDialog.Cancel>
                 <AlertDialog.Action>
-                  <Button style={{ width: 80 }} onClick={() => onAdd()}>
+                  <Button
+                    style={{ width: 80, backgroundColor: "blue" }}
+                    onClick={() => onAdd()}
+                  >
                     Add
                   </Button>
                 </AlertDialog.Action>
